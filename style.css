@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: hsl(202, 86%, 94%);
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 450px;
+  width: 820px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 1rem;
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 1rem;
+  margin: 20px;
+}
+
+.input-group-inline {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+.img-container {
+  flex: 1;
+  background-color: hsl(202, 55%, 16%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0rem 1rem 1rem 4rem;
+}
+
+/* Estilizando os radios e botões dentro do label */
+.radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Faz o botão ficar à direita */
+  padding: 10px;
+  margin: 5px 0;
+  border: 2px solid hsl(202, 55%, 16%);
+  border-radius: 8px;
+  border: 1.5px solid hsl(200, 26%, 54%);
+  background-color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  width: 100%;
+}
+
+.radio-label input {
+  /* Remove a aparência padrão do navegador */
+  appearance: none;
+  -webkit-appearance: none;
+  
+  /* Define tamanho, borda e fundo */
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid hsl(200, 26%, 54%);
+  border-radius: 50%;
+  background-color: #fff;
+  
+  /* Espaço entre o botão e o texto */
+  margin-right: 10px;
+  
+  /* Necessário para posicionar o pseudo-elemento */
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-label input:checked::before {
+  /* Cria a "bolinha" interna */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Tamanho um pouco menor que o radio, para deixar a borda branca visível */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  
+  /* Define a cor fixa desejada */
+  background-color: hsl(61, 70%, 52%);
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 2rem;
+  width: 70%;
+  background-color: hsl(61, 70%, 52%);
+  color: hsl(202, 55%, 16%);
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilizando os inputs */
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1.5px solid hsl(200, 26%, 54%);
+}
+
+input[type="number"]:focus {
+  outline: none;
+}
+
+/* Removendo setas dos inputs type="number" */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
