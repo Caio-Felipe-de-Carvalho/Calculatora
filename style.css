@@ -4,24 +4,39 @@
   box-sizing: border-box;
 }
 
+/* ===========================
+   ESTILO GERAL
+=========================== */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 40px;
   background-color: hsl(202, 86%, 94%);
   display: flex;
   justify-content: center;
+  color: hsl(200, 26%, 54%);
 }
 
+h1 {
+  margin-bottom: 30px;
+  color: hsl(200, 24%, 40%);
+}
+
+/* ===========================
+   CONTAINER PRINCIPAL
+=========================== */
 .container {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  height: 450px;
   width: 820px;
+  height: 470px;
   background-color: hsl(0, 0%, 100%);
-  border-radius: 1rem;
+  border-radius: 15px;
 }
 
+/* ===========================
+   FORMULÁRIO
+=========================== */
 .form-container {
   flex: 1;
   display: flex;
@@ -29,100 +44,158 @@ body {
   justify-content: space-between;
   background-color: hsl(0, 0%, 100%);
   border-radius: 1rem;
-  margin: 20px;
+  margin: 30px;
 }
 
 .input-group-inline {
   display: flex;
-  flex: 1;
-  gap: 10px;
+  gap: 1rem;
 }
 
-.img-container {
-  flex: 1;
-  background-color: hsl(202, 55%, 16%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0rem 1rem 1rem 4rem;
-}
-
-/* Estilizando os radios e botões dentro do label */
+/* ===========================
+   RADIO BUTTONS
+=========================== */
 .radio-label {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Faz o botão ficar à direita */
+  justify-content: flex-start;
   padding: 10px;
-  margin: 5px 0;
-  border: 2px solid hsl(202, 55%, 16%);
-  border-radius: 8px;
+  margin: 8px 0;
   border: 1.5px solid hsl(200, 26%, 54%);
+  border-radius: 5px;
   background-color: hsl(0, 0%, 100%);
   cursor: pointer;
   width: 100%;
+  color: hsl(202, 55%, 16%);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.radio-label:hover {
+  border-color: hsl(61, 70%, 52%);
 }
 
 .radio-label input {
-  /* Remove a aparência padrão do navegador */
   appearance: none;
-  -webkit-appearance: none;
-  
-  /* Define tamanho, borda e fundo */
   width: 20px;
   height: 20px;
   border: 1.5px solid hsl(200, 26%, 54%);
   border-radius: 50%;
-  background-color: #fff;
-  
-  /* Espaço entre o botão e o texto */
+  background-color: hsl(0, 0%, 100%);
   margin-right: 10px;
-  
-  /* Necessário para posicionar o pseudo-elemento */
   position: relative;
   cursor: pointer;
 }
 
+.radio-label input:checked {
+  border-color: hsl(61, 70%, 52%);
+}
+
 .radio-label input:checked::before {
-  /* Cria a "bolinha" interna */
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  /* Tamanho um pouco menor que o radio, para deixar a borda branca visível */
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  
-  /* Define a cor fixa desejada */
   background-color: hsl(61, 70%, 52%);
 }
 
+.radio-label:has(input:checked) {
+  background-color: hsl(60, 84%, 83%);
+  border-color: hsl(61, 70%, 52%);
+  color: hsl(202, 55%, 16%);;
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
 button {
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 2rem;
   width: 70%;
   background-color: hsl(61, 70%, 52%);
   color: hsl(202, 55%, 16%);
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
 }
 
-/* Estilizando os inputs */
-input[type="number"] {
+button:hover {
+  background-color: hsl(61, 72%, 73%);
+  transition: background-color 0.3s ease;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.input-wrapper, .radio-group {
+  position: relative;
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1.5px solid hsl(200, 26%, 54%);
+  margin-bottom: 20px;
 }
 
-input[type="number"]:focus {
+.input-wrapper input {
+  width: 100%;
+  border: 1.5px solid hsl(200, 26%, 54%);
+  border-radius: 5px;
+  padding: 10px 50px 10px 10px; 
+  font-size: 16px;
   outline: none;
 }
 
-/* Removendo setas dos inputs type="number" */
+.input-wrapper .input-label {
+  position: absolute;
+  top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(202, 86%, 94%);
+  color: hsl(202, 55%, 16%);
+  font-size: 14px;
+  padding: 12px;
+  pointer-events: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.input-label {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+
+}
+
+#mortgage-amount {
+  padding-left: 35px;
+}
+
+#mortgage-amount + .input-label {
+  top: 24.5px;
+  left: 1px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#mortgage-term + .input-label,
+#interest-rate + .input-label {
+  right: 1px; 
+  left: auto;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#mortgage-term, 
+#interest-rate {
+  padding-right: 50px; 
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -131,4 +204,92 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* ===========================
+   MENSAGEM DE ERRO
+=========================== */
+.error-message {
+  display: none;
+  color: hsl(4, 69%, 50%);
+  font-size: 12px;
+  margin-top: 5px; 
+  position: absolute;
+  bottom: -18px; 
+  left: 0;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap; 
+}
+
+/* ===========================
+   ÁREA DA IMAGEM
+=========================== */
+.img-container {
+  flex: 1;
+  background-color: hsl(202, 55%, 16%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 0rem 1rem 1rem 4rem;
+  padding: 20px;
+}
+
+.img-container img {
+  max-width: 80%;
+  height: auto;
+}
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+}
+
+h2 {
+  font-size: 24px;
+  color: hsl(0, 0%, 100%);
+  margin: 10px;
+}
+
+h3 {
+  font-size: 12px;
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+@media (max-width: 768px) {  
+  .container {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    border-radius: 0;
+  }
+
+  .form-container {
+    margin: 20px;
+  }
+
+  .img-container {
+    border-radius: 0;
+  }
+
+  .img-container img {
+    max-width: 70%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .input-group-inline {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
