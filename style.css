@@ -32,6 +32,7 @@ h1 {
   height: 470px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 15px;
+  flex-wrap: nowrap;
 }
 
 /* ===========================
@@ -172,6 +173,7 @@ label {
   left: 10px; 
   top: 50%;
 
+  white-space: nowrap;
 }
 
 #mortgage-amount {
@@ -181,14 +183,14 @@ label {
 #mortgage-amount + .input-label {
   top: 24.5px;
   left: 1px;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 4px 0px 0px 4px;
 }
 
 #mortgage-term + .input-label,
 #interest-rate + .input-label {
   right: 1px; 
   left: auto;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 4px 4px 0px;
 }
 
 #mortgage-term, 
@@ -219,7 +221,6 @@ input[type="number"] {
   left: 0;
   width: 100%;
   text-align: left;
-  white-space: nowrap; 
 }
 
 /* ===========================
@@ -234,7 +235,7 @@ input[type="number"] {
   align-items: center;
   text-align: center;
   border-radius: 0rem 1rem 1rem 4rem;
-  padding: 20px;
+  padding: 15px;
 }
 
 .img-container img {
@@ -258,11 +259,40 @@ h2 {
 }
 
 h3 {
-  font-size: 12px;
+  font-size: 14px;
+}
+
+h4{
+  font-size: 38px;
+  color: hsl(61, 70%, 52%);
+}
+
+.result{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  max-width: 90%;
+  gap: 60px;
+}
+
+.top-text, h2{
+  text-align: left;
+  margin: 0;
+}
+
+.Calculation-Results{
+  max-width: 120%;
+  height: 80%;
+  background-color: rgb(5, 0, 59);
+  padding: 30px;
+  border-radius: 8px; 
+  box-shadow: ;
 }
 
 /* ===========================
-   RESPONSIVIDADE
+   @MEDIA-QUERIE
 =========================== */
 @media (max-width: 768px) {  
   .container {
@@ -270,6 +300,7 @@ h3 {
     height: auto;
     width: 90%;
     border-radius: 0;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.1);
   }
 
   .form-container {
@@ -278,6 +309,7 @@ h3 {
 
   .img-container {
     border-radius: 0;
+    width: 100%;
   }
 
   .img-container img {
@@ -291,5 +323,23 @@ h3 {
   .input-group-inline {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .input-wrapper .input-label {
+    padding: 11.5px;
+}
+
+  #mortgage-amount + .input-label {
+    top: 24px;
+    left: 1px;
+    border-radius: 5px 0px 0px 5px;
+  }
+  
+  #mortgage-term + .input-label,
+  #interest-rate + .input-label {
+    right: 1px; 
+    top: 24px;
+    left: auto;
+    border-radius: 0px 5px 5px 0px;
   }
 }
