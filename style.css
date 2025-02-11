@@ -17,7 +17,10 @@ body {
 }
 
 h1 {
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-start;
+  white-space: nowrap;
+  font-size: 20px;
   color: hsl(200, 24%, 40%);
 }
 
@@ -28,11 +31,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  width: 820px;
-  height: 470px;
+  width: 75%;
+  height: auto;
   background-color: hsl(0, 0%, 100%);
   border-radius: 15px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 /* ===========================
@@ -51,6 +54,31 @@ h1 {
 .input-group-inline {
   display: flex;
   gap: 1rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.clear-all-button {
+  background: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: end;
+  border: none;
+  color: hsl(200, 24%, 40%);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 1px;
+}
+
+.clear-all-button:hover {
+  background: hsl(0, 0%, 100%);
+  color: hsl(61, 70%, 52%);
 }
 
 /* ===========================
@@ -172,7 +200,6 @@ label {
   position: absolute;
   left: 10px; 
   top: 50%;
-
   white-space: nowrap;
 }
 
@@ -181,7 +208,7 @@ label {
 }
 
 #mortgage-amount + .input-label {
-  top: 24.5px;
+  top: 25px;
   left: 1px;
   border-radius: 4px 0px 0px 4px;
 }
@@ -228,14 +255,13 @@ input[type="number"] {
 =========================== */
 .img-container {
   flex: 1;
-  background-color: hsl(202, 55%, 16%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: hsl(202, 55%, 16%);
   border-radius: 0rem 1rem 1rem 4rem;
-  padding: 15px;
 }
 
 .img-container img {
@@ -244,18 +270,15 @@ input[type="number"] {
 }
 
 .text-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   max-width: 90%;
 }
 
 h2 {
   font-size: 24px;
   color: hsl(0, 0%, 100%);
-  margin: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 
 h3 {
@@ -263,32 +286,49 @@ h3 {
 }
 
 h4{
-  font-size: 38px;
+  font-size: 42px;
   color: hsl(61, 70%, 52%);
+}
+h5 {
+  font-size: 24px;
+  color: hsl(0, 0%, 100%);
 }
 
 .result{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  max-width: 90%;
-  gap: 60px;
+  margin: 30px;
+  margin-top: -50px;
 }
 
-.top-text, h2{
+.top-text{
+  display: flex;
+  flex-direction: column;
   text-align: left;
-  margin: 0;
+  row-gap: 10px;
+  margin-top: 15px;
 }
 
 .Calculation-Results{
-  max-width: 120%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+  row-gap: 12px; 
+  width: 100%;
   height: 80%;
-  background-color: rgb(5, 0, 59);
-  padding: 30px;
-  border-radius: 8px; 
-  box-shadow: ;
+  padding: 20px;
+  background-color: hsl(208, 23%, 15%);
+  border-radius: 6px;
+  box-shadow: 0px -3px 0px 0px hsl(61, 70%, 52%);
+}
+
+hr{
+  width: 100%;
+  height: 1px;
+  background-color: hsl(202, 48%, 19%);
+  border: none;
 }
 
 /* ===========================
@@ -310,6 +350,7 @@ h4{
   .img-container {
     border-radius: 0;
     width: 100%;
+    padding: 30px;
   }
 
   .img-container img {
@@ -327,12 +368,16 @@ h4{
 
   .input-wrapper .input-label {
     padding: 11.5px;
-}
+  }
+
+  .result{
+   padding-top: 30px;
+  }
 
   #mortgage-amount + .input-label {
     top: 24px;
     left: 1px;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 4px 0px 0px 4px;
   }
   
   #mortgage-term + .input-label,
@@ -340,6 +385,6 @@ h4{
     right: 1px; 
     top: 24px;
     left: auto;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 4px 4px 0px;
   }
 }

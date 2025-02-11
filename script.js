@@ -1,9 +1,10 @@
+// Evento para o submit do formulário (validação e cálculo)
 document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
 
   let hasError = false;
 
-  // modificacoes no input-wrapper
+  // Validação dos campos de entrada
   document.querySelectorAll(".input-wrapper").forEach(wrapper => {
     let input = wrapper.querySelector("input");
     let errorMessage = wrapper.querySelector(".error-message");
@@ -17,73 +18,31 @@ document.querySelector("form").addEventListener("submit", function (event) {
       hasError = true;
     } else {
       errorMessage.style.display = "none";
-
-      // Aqui remove os estilos do span caso não haja erro
       spanLabel.style.backgroundColor = "";
       spanLabel.style.color = "";
       input.style.borderColor = "";
     }
   });
 
-  / botões de rádio
+  // Validação dos botões de rádio
   let radioGroup = document.querySelector(".radio-group");
-  let radioButtons = radioGroup.querySelectorAll("input[type='radio']");
-  let radioError = radioGroup.querySelector(".error-message");
-
-  let isChecked = Array.from(radioButtons).some(radio => radio.checked);
-
-  if (!isChecked) {
-    radioError.style.display = "block";
-    hasError = true;
-  } else {
-    radioError.style.display = "none";
+  if (radioGroup) {
+    let radioButtons = radioGroup.querySelectorAll("input[type='radio']");
+    let radioError = radioGroup.querySelector(".error-message");
+    let isChecked = Array.from(radioButtons).some(radio => radio.checked);
+  
+    if (!isChecked) {
+      radioError.style.display = "block";
+      hasError = true;
+    } else {
+      radioError.style.display = "none";
+    }
   }
 
   if (!hasError) {
     console.log("Formulário válido! Submetendo...");
-  }
-});
 
-// Calculadora
-document.querySelector("form").addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  let hasError = false;
-
-  document.querySelectorAll(".input-wrapper").forEach(wrapper => {
-    let input = wrapper.querySelector("input");
-    let errorMessage = wrapper.querySelector(".error-message");
-    let spanLabel = wrapper.querySelector(".input-label");
-
-    if (input.value.trim() === "") {
-      errorMessage.style.display = "block";
-      spanLabel.style.backgroundColor = "red";
-      spanLabel.style.color = "white";
-      input.style.borderColor = "red"; 
-      hasError = true;
-    } else {
-      errorMessage.style.display = "none";
-      spanLabel.style.backgroundColor = "";
-      spanLabel.style.color = "";
-      input.style.borderColor = "";
-    }
-  });
-
-  let radioGroup = document.querySelector(".radio-group");
-  let radioButtons = radioGroup.querySelectorAll("input[type='radio']");
-  let radioError = radioGroup.querySelector(".error-message");
-
-  let isChecked = Array.from(radioButtons).some(radio => radio.checked);
-
-  if (!isChecked) {
-    radioError.style.display = "block";
-    hasError = true;
-  } else {
-    radioError.style.display = "none";
-  }
-
-  if (!hasError) {
-    
+    // Cálculo da hipoteca
     let mortgageAmount = parseFloat(document.getElementById("mortgage-amount").value);
     let mortgageTerm = parseFloat(document.getElementById("mortgage-term").value);
     let interestRate = parseFloat(document.getElementById("interest-rate").value);
@@ -97,21 +56,46 @@ document.querySelector("form").addEventListener("submit", function (event) {
     monthlyPayment = monthlyPayment.toFixed(2);
     totalRepayment = totalRepayment.toFixed(2);
 
+    // Atualiza a área de resultados
     let imgContainer = document.querySelector(".img-container");
     imgContainer.innerHTML = `
-    <div class="result">
-      <div class="top-text">
-      <h2>Your results</h2>
-        <h3>Your results are shown belos based on the information you provided. To adjust the results, edits the form and click “calculate repayments” again.</h3>
-      </div>
-      <div class="Calculation-Results">
-        <strong>Your monthly repayments:</strong>
-        <h4>£${monthlyPayment}</h4>
+      <div class="result">
+        <div class="top-text">
+          <h5>Your results</h5>
+          <h3>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again.</h3>
+        </div>
+        <div class="Calculation-Results">
+          <strong>Your monthly repayments:</strong>
+          <h4>£${monthlyPayment}</h4>
           <hr>
-        <strong>Total you’ll repay over the term:</strong>
-        <h2>£${totalRepayment}</h2>
+          <strong>Total you’ll repay over the term:</strong>
+          <h5>£${totalRepayment}</h5>
+        </div>
       </div>
-    </div>
     `;
   }
+});
+
+// Evento para o botão Clear All (definido fora do submit)
+document.querySelector(".clear-all-btn").addEventListener("click", function() {
+  // Reseta o formulário
+  document.querySelector("form").reset();
+  
+  // Remove as mensagens de erro e restaura os estilos dos inputs e spans
+  document.querySelectorAll(".error-message").forEach(msg => msg.style.display = "none");
+  document.querySelectorAll(".input-wrapper input").forEach(input => input.style.borderColor = "");
+  document.querySelectorAll(".input-label").forEach(span => {
+    span.style.backgroundColor = "";
+    span.style.color = "";
+  });
+  
+  // Restaura o conteúdo original da área de resultados
+  const imgContainer = document.querySelector(".img-container");
+  imgContainer.innerHTML = `
+    <img src="assets/images/illustration-empty.svg" alt="Image-calculator">
+    <div class="text-area">
+      <h2>Results shown here</h2>
+      <h3>Complete the form and click “calculate repayments” to see your monthly repayments.</h3>
+    </div>
+  `;
 });
